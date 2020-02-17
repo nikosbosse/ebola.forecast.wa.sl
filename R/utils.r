@@ -15,7 +15,7 @@ pit_test_sample <- function(y, dat, J, N=10) {
     P_x <- vapply(seq_along(y), function(i) f[[i]](y[i]), .0)
     P_xm1 <- vapply(seq_along(y), function(i) f[[i]](y[i]-1), .0)
     pvalues <-
-        replicate(N, ad.test(P_xm1 + runif(length(P_x)) * (P_x - P_xm1))$p.value)
+        replicate(N, goftest::ad.test(P_xm1 + runif(length(P_x)) * (P_x - P_xm1))$p.value)
     return(pvalues)
 }
 

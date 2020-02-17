@@ -41,12 +41,12 @@ assess_all_forecasts <- function (max_horizon) {
         summarise(mean=mean(sharpness), sd=sd(sharpness))
 
     ret[["RPS"]] <- df %>%
-        assess_incidence_forecast(crps_sample) %>%
+        assess_incidence_forecast(scoringRules::crps_sample) %>%
         group_by(model, horizon) %>%
         summarise(mean=mean(score), sd=sd(score))
 
     ret[["DSS"]] <- df %>%
-        assess_incidence_forecast(dss_sample) %>%
+        assess_incidence_forecast(scoringRules::dss_sample) %>%
         group_by(model, horizon) %>%
         summarise(mean=mean(score), sd=sd(score))
 
@@ -58,3 +58,5 @@ assess_all_forecasts <- function (max_horizon) {
     return(ret)
 }
 
+
+assess_all_forecasts(7)
