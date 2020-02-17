@@ -59,4 +59,3 @@ assess_all_forecasts <- function (max_horizon) {
 }
 
 
-assess_all_forecasts(7)
